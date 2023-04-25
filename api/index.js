@@ -1,15 +1,10 @@
-const app = require('express')();
-
-app.get('/api', (req, res) => {
-	const path = 'http://localhost/login'
-	res.setHeader('Content-Type', 'text/html');
-	res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-	res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
+const express = require("express");
+const app = express();
+app.get("/", (req, res) => {
+	res.send("Express on Vercel");
 });
-
-app.get('/api/item/:slug', (req, res) => {
-	const { slug } = req.params;
-	res.end(`Item: ${slug}`);
+app.listen(5000, () => {
+	console.log("Running on port 5000.");
 });
-
+// Export the Express API
 module.exports = app;
