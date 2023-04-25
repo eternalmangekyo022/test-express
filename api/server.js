@@ -9,6 +9,4 @@ app.get('/', (req, res) => {
 	res.json({ status: 'success', message: 'sfsfonsofie' })
 })
 
-const PORT = 80 || process.env.PORT
-
-app.listen(PORT, () => console.log(`  ${PORT}  `))
+export default app
