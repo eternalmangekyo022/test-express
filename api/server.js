@@ -1,12 +1,15 @@
-import express from 'express'
-import cors from 'cors'
+const app = require('express')();
 
-const app = express()
-app.use(express.json())
-app.use(cors())
+app.get('/api', (req, res) => {
+	const path = 'http://localhost/login'
+	res.setHeader('Content-Type', 'text/html');
+	res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+	res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
+});
 
-app.get('/', (req, res) => {
-	res.json({ status: 'success', message: 'sfsfonsofie' })
-})
+app.get('/api/item/:slug', (req, res) => {
+	const { slug } = req.params;
+	res.end(`Item: ${slug}`);
+});
 
-export default app
+module.exports = app;
